@@ -7,6 +7,8 @@ import org.jetbrains.exposed.sql.LikePattern
 import org.jetbrains.exposed.sql.Op
 import org.jetbrains.exposed.sql.Query
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.greaterEq
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.lessEq
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.like
 import org.jetbrains.exposed.sql.and
 import org.jetbrains.exposed.sql.or
@@ -31,3 +33,9 @@ infix fun <T> ExpressionWithColumnType<T>.eqIfNotNull(t: T?): Op<Boolean>? = t?.
 
 infix fun <T : String?> Expression<T>.likeIfNotNull(pattern: String?): LikeEscapeOp? =
     pattern?.let { this like LikePattern(it) }
+
+infix fun <T : Comparable<T>> ExpressionWithColumnType<T>.greaterEqIfNotNull(t: T?): Op<Boolean>? =
+    t?.let { this greaterEq it }
+
+infix fun <T : Comparable<T>> ExpressionWithColumnType<T>.lessEqIfNotNull(t: T?): Op<Boolean>? =
+    t?.let { this lessEq it }
