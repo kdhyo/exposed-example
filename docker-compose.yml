@@ -1,0 +1,16 @@
+services:
+  mysql:
+    platform: linux/arm64
+    image: mysql:8.3
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=exposed_example
+      - MYSQL_LOG_QUERIES_ENABLED=1
+      - TZ=Asia/Seoul
+    command: [
+      "--general_log=1",
+      "--general_log_file=/var/lib/mysql/general.log"
+    ]
