@@ -80,6 +80,7 @@ class MultiRepositoryTest {
 
     @BeforeEach
     fun setup() {
+        AuthorEntity.findById()
         // Author 데이터 삽입
         val authors = AuthorTable.batchInsert((1..10)) { i ->
             this[AuthorTable.name] = "Author $i"

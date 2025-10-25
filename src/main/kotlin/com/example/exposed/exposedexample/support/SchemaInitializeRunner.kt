@@ -6,7 +6,6 @@ import com.example.exposed.exposedexample.dao.PublisherTable
 import com.example.exposed.exposedexample.domain.BookInfoDTO
 import kotlinx.datetime.LocalDate
 import org.jetbrains.exposed.sql.ResultRow
-import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.batchInsert
 import org.jetbrains.exposed.sql.insertAndGetId
 import org.springframework.boot.ApplicationArguments
